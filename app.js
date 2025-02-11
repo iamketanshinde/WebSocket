@@ -6,6 +6,14 @@ const {Server} = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
+const io = new Server(server)
+
+
+//io socket -connection
+io.on('connection', (socket)=>{
+    console.log("IO User Connected!",socket.id);
+})
+
 
 
 
