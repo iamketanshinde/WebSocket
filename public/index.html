@@ -8,10 +8,14 @@
 <body>
     <h1>Chatting</h1>
 
+    <button onclick="CreateConnection()">CreateConnection</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        const socket = io();
+
+        function CreateConnection(){
+            const socket = io();
+        }
     </script>
 
 </body>
