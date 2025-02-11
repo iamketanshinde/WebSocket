@@ -6,4 +6,7 @@ const server = http.createServer(app);
 
 
 
+app.use(express.static('/public'))
+
+
 server.listen(9000, ()=> console.log(`Server started at PORT 9000!`));
