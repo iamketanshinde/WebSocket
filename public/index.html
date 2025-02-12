@@ -22,6 +22,7 @@
         sendBtn.addEventListener("click", (e) =>{
             const message = messageInp.value;
             console.log(message);
+            socket.emit("user-message", message);
         });
 
 
