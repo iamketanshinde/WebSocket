@@ -11,7 +11,9 @@ const io = new Server(server)
 
 //io socket -connection
 io.on('connection', (socket)=>{
-    console.log("IO User Connected!",socket.id);
+    socket.on("user-message", (message) =>{
+        console.log("A New User Message", message);
+    })
 })
 
 
