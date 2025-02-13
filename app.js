@@ -12,10 +12,9 @@ const io = new Server(server)
 //io socket -connection
 io.on('connection', (socket)=>{
     socket.on("user-message", (message) =>{
-        console.log("A New User Message", message);
-    })
-})
-
+        io.emit('message', message);
+    });
+});
 
 
 

@@ -6,11 +6,11 @@
     <title>Chat App</title>
 </head>
 <body>
-    <h1>Chatting</h1>
+    <h1>Chatting App</h1>
     <input type="text" placeholder="Enter Message" id="message">
     <button id="sendBtn">send</button>
 
-
+    <div id="messages"></div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -18,12 +18,25 @@
         const socket = io();
         const sendBtn = document.getElementById("sendBtn");
         const messageInp = document.getElementById("message");
+        const allmessages = document.getElementById("messages");
 
-        sendBtn.addEventListener("click", (e) =>{
-            const message = messageInp.value;
-            console.log(message);
+
+
+        socket.on("message",message => {
+            const P = document.createElement('p');
+            P.innerHTML=message;
+            allmessages.appendChild(P);
+        })
+
+
+        sendBtn.addEventListener("click", (e) => {
+        const message = messageInp.value.trim();
+        if (message) {
             socket.emit("user-message", message);
-        });
+            messageInp.value = ""; // Clears input field after sending
+        }
+});
+
 
 
 
